@@ -27,8 +27,9 @@
       z-index: 100;
       border-bottom: 1px solid #1a1a1a;
     }
-    .logo { font-size: 22px; font-weight: 800; color: #4ade80; letter-spacing: -0.5px; }
+    .logo { font-size: 22px; font-weight: 800; color: #4ade80; letter-spacing: -0.5px; line-height: 1.2; }
     .logo span { color: #fff; }
+    .logo-sub { font-size: 11px; color: #555; font-weight: 500; letter-spacing: 0.5px; }
     .nav-cta {
       background: #4ade80;
       color: #0a0a0a;
@@ -110,18 +111,21 @@
     .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 900; margin-bottom: 14px; letter-spacing: -0.5px; }
     .section-sub { color: #777; font-size: 16px; margin-bottom: 50px; max-width: 500px; }
 
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .services-grid { grid-template-columns: 1fr; } }
     .service-card {
       background: #111;
       border: 1px solid #1e1e1e;
       border-radius: 12px;
-      padding: 28px;
-      transition: border-color 0.2s;
+      padding: 24px 20px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-align: center;
     }
-    .service-card:hover { border-color: #4ade80; }
-    .service-icon { font-size: 32px; margin-bottom: 16px; }
-    .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .service-card p { color: #777; font-size: 15px; line-height: 1.6; }
+    .service-card:hover { border-color: #4ade80; transform: translateY(-2px); }
+    .service-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+    .service-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .service-card p { color: #666; font-size: 13px; line-height: 1.6; }
 
     /* BEFORE/AFTER */
     .ba-section {
@@ -156,6 +160,22 @@
     .ba-card img { width: 100%; height: 400px; object-fit: cover; display: block; }
     .ba-card.before .ba-placeholder { background: #1a1209; color: #555; }
     .ba-card.after .ba-placeholder { background: #0d1f0d; color: #4ade80; }
+
+    /* FAQ */
+    .faq-section { padding: 80px 40px; max-width: 800px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #1a1a1a; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      font-size: 17px; font-weight: 700; color: #fff;
+      padding: 22px 0; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      user-select: none;
+    }
+    .faq-question:hover { color: #4ade80; }
+    .faq-icon { font-size: 20px; color: #4ade80; transition: transform 0.3s; flex-shrink: 0; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { font-size: 15px; color: #777; line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0; }
+    .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 20px; }
 
     /* TESTIMONIALS */
     .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -231,13 +251,15 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">Z Mulch <span>Solutions</span></div>
+    <div class="logo">Z Mulch <span>Solutions</span><div class="logo-sub">Charlotte's Mulch Specialists</div></div>
+    <a href="tel:9803155678" class="nav-cta" style="margin-right:10px; background:transparent; border:1px solid #333; color:#fff;">📞 (980) 315-5678</a>
     <a href="#quote" class="nav-cta">Get Free Quote</a>
   </nav>
 
   <!-- HERO -->
   <div class="hero">
-    <div class="badge">⚡ Same-Week Installation Available</div>
+    <div class="badge">⚡ Same Day Quotes. Fast Turnarounds.</div>
+    <div class="badge" style="margin-left:8px;">📍 Serving Charlotte & Surrounding Areas</div>
     <h1>Your Yard Will Look <span>10x Better</span> By Friday.</h1>
     <p>Professional mulch laying for homeowners who want a clean, beautiful yard — without the back-breaking work.</p>
     <div class="hero-btns">
@@ -249,12 +271,12 @@
   <!-- STATS -->
   <div class="stats">
     <div class="stat">
-      <div class="stat-number">500+</div>
+      <div class="stat-number">75+</div>
       <div class="stat-label">Yards Transformed</div>
     </div>
     <div class="stat">
-      <div class="stat-number">5★</div>
-      <div class="stat-label">Average Rating</div>
+      <div class="stat-number">4.8★</div>
+<div class="stat-label">Average Rating</div>
     </div>
     <div class="stat">
       <div class="stat-number">48hr</div>
@@ -275,7 +297,7 @@
       <div class="service-card">
         <div class="service-icon">🌿</div>
         <h3>Fresh Mulch Installation</h3>
-        <p>Premium hardwood and dyed mulch delivered and laid to the perfect depth — 3 inches for maximum weed control and moisture retention.</p>
+        <p>Professional mulch installation laid to the perfect depth — 3 inches for maximum weed control and moisture retention.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">🔄</div>
@@ -288,19 +310,29 @@
         <p>We clean out dead leaves, pull weeds, and edge your beds before laying — so everything looks sharp and defined.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">🚛</div>
-        <h3>Bulk Mulch Delivery</h3>
-        <p>Need a large amount? We deliver by the cubic yard straight to your property. HOAs, commercial properties, and large estates welcome.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🌱</div>
-        <h3>Seasonal Mulching</h3>
-        <p>Spring and fall mulching packages to protect your plants year-round and keep your yard looking its best every season.</p>
-      </div>
-      <div class="service-card">
         <div class="service-icon">✅</div>
         <h3>Full Yard Packages</h3>
         <p>Front yard, backyard, side beds — we handle everything in one visit so you're not waiting on multiple crews.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💪</div>
+        <h3>Labor Only</h3>
+        <p>Already have your mulch? We'll handle the heavy lifting. Our crew shows up, lays it right, and leaves your yard looking immaculate — no materials needed on our end.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌾</div>
+        <h3>Pine Straw Installation</h3>
+        <p>A Carolina classic. Pine straw is a fast, affordable, and natural-looking alternative to mulch — perfect for large beds, slopes, and shaded areas. Laid clean and neat every time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍂</div>
+        <h3>Leaf Removal</h3>
+        <p>Don't let falling leaves take over your yard. We clear everything out — beds, lawns, driveways — so your property stays clean and sharp all the way through winter.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🗑️</div>
+        <h3>Yard Waste Removal</h3>
+        <p>We don't just do the work — we haul everything away. Old mulch, debris, trimmings — gone. You're left with a clean yard and nothing to deal with.</p>
       </div>
     </div>
   </div>
@@ -319,6 +351,120 @@
         <div class="ba-label">AFTER</div>
         <img src="after.jpg" alt="After mulch installation" />
       </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+    <div class="faq-item">
+      <div class="faq-question">How much mulch do I need? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Most garden beds need about 3 inches deep. We'll give you a free quote that includes exactly how much your yard requires — no guessing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How long does the job take? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Most residential yards are done in 2-4 hours. Larger properties may take a full day. We'll give you a time estimate when we quote.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Do I need to be home during the job? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Nope. As long as we have access to the yard, we'll handle everything and send you photos when we're done.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Do you haul away the old mulch? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Yes — we clear out old, dead mulch before laying fresh. Your beds will be completely clean before we start.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">What types of mulch do you offer? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">We work with all mulch types. Not sure which is right for your yard? We'll recommend the best option during your free quote.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How often should I remulch? <span class="faq-icon">+</span></div>
+      <div class="faq-answer">Once a year is the sweet spot — usually in spring. We offer seasonal packages so your yard always looks its best without you having to think about it.</div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+
+  <!-- CONTACT -->
+  <div id="quote" style="padding: 80px 40px; max-width: 900px; margin: 0 auto; border-bottom: 1px solid #1a1a1a;">
+    <div class="section-label" style="text-align:center;">Contact Us</div>
+    <h2 class="section-title" style="text-align:center;">Get Your Free Quote</h2>
+    <p style="color:#777; font-size:16px; margin-bottom:50px; text-align:center;">Fill out the form below and we'll get back to you within 24 hours. Rather talk? Call or text us directly.</p>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:start;">
+
+      <!-- FORM -->
+      <form action="https://formspree.io/f/xvznpqol" method="POST" style="display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <label style="font-size:12px; color:#555; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:6px;">Full Name</label>
+          <input type="text" name="name" placeholder="John Smith" required style="width:100%; padding:14px 16px; background:#111; border:1px solid #222; border-radius:8px; color:#fff; font-size:15px; outline:none;" onfocus="this.style.borderColor='#4ade80'" onblur="this.style.borderColor='#222'" />
+        </div>
+        <div>
+          <label style="font-size:12px; color:#555; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:6px;">Phone Number</label>
+          <input type="tel" name="phone" placeholder="(980) 000-0000" required style="width:100%; padding:14px 16px; background:#111; border:1px solid #222; border-radius:8px; color:#fff; font-size:15px; outline:none;" onfocus="this.style.borderColor='#4ade80'" onblur="this.style.borderColor='#222'" />
+        </div>
+        <div>
+          <label style="font-size:12px; color:#555; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:6px;">Service Address</label>
+          <input type="text" name="address" placeholder="123 Main St, Charlotte, NC" required style="width:100%; padding:14px 16px; background:#111; border:1px solid #222; border-radius:8px; color:#fff; font-size:15px; outline:none;" onfocus="this.style.borderColor='#4ade80'" onblur="this.style.borderColor='#222'" />
+        </div>
+        <div>
+          <label style="font-size:12px; color:#555; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:6px;">Service Needed</label>
+          <select name="service" required style="width:100%; padding:14px 16px; background:#111; border:1px solid #222; border-radius:8px; color:#fff; font-size:15px; outline:none; cursor:pointer;" onfocus="this.style.borderColor='#4ade80'" onblur="this.style.borderColor='#222'">
+            <option value="" disabled selected>Select a service...</option>
+            <option value="Fresh Mulch Installation">Fresh Mulch Installation</option>
+            <option value="Mulch Refresh & Top-Up">Mulch Refresh & Top-Up</option>
+            <option value="Pine Straw Installation">Pine Straw Installation</option>
+            <option value="Leaf Removal">Leaf Removal</option>
+            <option value="Bed Cleanup & Edging">Bed Cleanup & Edging</option>
+            <option value="Labor Only">Labor Only</option>
+            <option value="Yard Waste Removal">Yard Waste Removal</option>
+            <option value="Full Yard Package">Full Yard Package</option>
+            <option value="Other">Other (explain in details below)</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:12px; color:#555; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:6px;">Additional Details</label>
+          <textarea name="message" placeholder="Any specific instructions or questions?" rows="4" style="width:100%; padding:14px 16px; background:#111; border:1px solid #222; border-radius:8px; color:#fff; font-size:15px; outline:none; resize:vertical;" onfocus="this.style.borderColor='#4ade80'" onblur="this.style.borderColor='#222'"></textarea>
+        </div>
+        <button type="submit" style="background:#4ade80; color:#0a0a0a; padding:16px; border:none; border-radius:8px; font-weight:800; font-size:16px; cursor:pointer;">Get My Free Quote →</button>
+      </form>
+
+      <!-- CONTACT INFO -->
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <a href="tel:9803155678" style="display:flex; align-items:center; gap:16px; background:#111; border:1px solid #1e1e1e; border-radius:12px; padding:24px; text-decoration:none;" onmouseover="this.style.borderColor='#4ade80'" onmouseout="this.style.borderColor='#1e1e1e'">
+          <span style="font-size:28px;">📞</span>
+          <div>
+            <div style="font-size:16px; font-weight:800; color:#fff;">(980) 315-5678</div>
+            <div style="font-size:13px; color:#555; margin-top:4px;">Call or text anytime</div>
+          </div>
+        </a>
+        <a href="mailto:zmulchsolutions@gmail.com" style="display:flex; align-items:center; gap:16px; background:#111; border:1px solid #1e1e1e; border-radius:12px; padding:24px; text-decoration:none;" onmouseover="this.style.borderColor='#4ade80'" onmouseout="this.style.borderColor='#1e1e1e'">
+          <span style="font-size:28px;">✉️</span>
+          <div>
+            <div style="font-size:16px; font-weight:800; color:#fff;">zmulchsolutions@gmail.com</div>
+            <div style="font-size:13px; color:#555; margin-top:4px;">We reply within 24hrs</div>
+          </div>
+        </a>
+        <div style="background:#111; border:1px solid #1e1e1e; border-radius:12px; padding:24px;">
+          <div style="font-size:13px; color:#555; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;">Why Choose Z Mulch</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="font-size:14px; color:#888;"><span style="color:#4ade80; font-weight:700;">✓</span> Same day quotes</div>
+            <div style="font-size:14px; color:#888;"><span style="color:#4ade80; font-weight:700;">✓</span> Licensed & insured crew</div>
+            <div style="font-size:14px; color:#888;"><span style="color:#4ade80; font-weight:700;">✓</span> 100% satisfaction guarantee</div>
+            <div style="font-size:14px; color:#888;"><span style="color:#4ade80; font-weight:700;">✓</span> Free estimates, no obligation</div>
+            <div style="font-size:14px; color:#888;"><span style="color:#4ade80; font-weight:700;">✓</span> Serving Charlotte & surrounding areas</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -350,7 +496,7 @@
   </div>
 
   <!-- CTA -->
-  <div class="cta-section" id="quote">
+  <div class="cta-section">
     <div class="section-label" style="text-align:center;">Get Started</div>
     <h2>Get Your Free Quote Today</h2>
     <p>No pressure. No obligation. Just a fast, fair quote from a local crew.</p>
@@ -368,7 +514,8 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Z Mulch Solutions · All Rights Reserved</p>
+    <p>© 2026 Z Mulch Solutions · All Rights Reserved · Proudly Serving Charlotte & Surrounding Areas</p>
+    <p style="margin-top:8px;">📞 (980) 315-5678 · ✉️ zmulchsolutions@gmail.com</p>
   </footer>
 
 </body>
